@@ -91,7 +91,7 @@ bool ugly::Engine::initialize()
     glfwInit();
     glfwWindowHint(GLFW_CLIENT_API, GLFW_NO_API);
     glfwWindowHint(GLFW_RESIZABLE, GLFW_FALSE);
-    m_window = glfwCreateWindow(800, 600, "UglyEngine", nullptr, nullptr);
+    m_window = glfwCreateWindow(m_display_width, m_display_height, m_title.c_str(), nullptr, nullptr);
     if (!m_window)
     {
         PLOG_ERROR << "Failed to create GLFW window";

@@ -59,8 +59,16 @@ namespace ugly
 
 	private:
 
-		/*! GLFW window. */
+		/*! GLFW window */
 		GLFWwindow* m_window{ nullptr };
+
+		/*! Display width */
+		int m_display_width{ 800 };
+
+		/*! Display height */
+		int m_display_height{ 600 };
+
+		std::string m_title{ "UlgyEngine" }; 
 	};
 
 }//namespace ugly
