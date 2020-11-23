@@ -30,6 +30,7 @@ set(HEADERS
     Core.h
     Application.h
     Engine.h
+    VulkanManager.h
 )
 # List of source files
 set(SRCS
@@ -37,6 +38,7 @@ set(SRCS
     LogFormatter.cpp
     Application.cpp
     Engine.cpp
+    VulkanManager.cpp
 )
 
 # Generate filename with path

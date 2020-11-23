@@ -1,5 +1,6 @@
 #include "Engine.h"
 #include "LogFormatter.h"
+#include "VulkanManager.h"
 
 
 /**
@@ -85,7 +86,7 @@ void ugly::Engine::initializePLog()
  */
 bool ugly::Engine::initialize()
 {
-    PLOG_INFO << "Initialize engine";
+    PLOG_INFO << "--- Initialize engine";
 
     PLOG_INFO << "Initialize GLFW";
     glfwInit();
@@ -98,6 +99,14 @@ bool ugly::Engine::initialize()
         return false;
     }
 
+    PLOG_INFO << "Initialize Vulkan";
+    m_vulkan_manager.reset(new VulkanManager);
+    if (!m_vulkan_manager->initialize())
+    {
+        PLOG_ERROR << "Failed to initialize vulkan manager";
+        return false;
+    }
+
     return true;
 }
 
@@ -107,7 +116,14 @@ bool ugly::Engine::initialize()
  */
 void ugly::Engine::shutdown()
 {
-    PLOG_INFO << "Shutdown engine";
+    PLOG_INFO << "--- Shutdown engine";
+
+    PLOG_INFO << "Shutdown vulkan";
+    if (m_vulkan_manager.get() != nullptr)
+    {
+        m_vulkan_manager->shutdown();
+        m_vulkan_manager.reset(nullptr);
+    }
 
     PLOG_INFO << "Shutdown GLFW";
     if (m_window)

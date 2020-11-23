@@ -5,6 +5,7 @@
 namespace ugly
 {
 	class Application;
+	class VulkanManager;
 
 	/**
 	 * \brief Main class of UglyEngine.
@@ -69,6 +70,8 @@ namespace ugly
 		int m_display_height{ 600 };
 
 		std::string m_title{ "UlgyEngine" }; 
+
+		std::unique_ptr<VulkanManager> m_vulkan_manager;
 	};
 
 }//namespace ugly
